@@ -46,18 +46,4 @@ class User extends Authenticatable
         'password' => Password::class,
     ];
 
-    public function doctor()
-    {
-        return $this->hasOne(Doctor::class);
-    }
-
-    public function institution()
-    {
-        return $this->hasOne(Institution::class);
-    }
-
-    public function usermessage()
-    {
-        return $this->hasOne(UserMessage::class);
-    }
 }
