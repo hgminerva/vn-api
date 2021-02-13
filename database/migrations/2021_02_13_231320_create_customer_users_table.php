@@ -29,10 +29,10 @@ class CreateCustomerUsersTable extends Migration
             $table->text('keywords');
             $table->text('remarks');
 
-            $table->bigInteger('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('us_state_id')->unsigned();
-            $table->foreign('us_state_id')->references('id')->on('us_state');
+            $table->foreign('us_state_id')->references('id')->on('us_states');
             $table->bigInteger('us_state_category_id')->unsigned();
             $table->foreign('us_state_category_id')->references('id')->on('us_state_categories');
 
