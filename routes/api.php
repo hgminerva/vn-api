@@ -16,6 +16,8 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\UsStateController;
 use App\Http\Controllers\UsStateCategoryController;
 use App\Http\Controllers\VaccineUrlController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomerUserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -70,6 +72,21 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('vaccine_urls', [VaccineUrlController::class, 'store']);
     Route::put('vaccine_urls/{vaccine_url}', [VaccineUrlController::class, 'update']);
     Route::delete('vaccine_urls/{vaccine_url}', [VaccineUrlController::class, 'destroy']);
+
+    // Customers
+    Route::get('customers', [CustomerController::class, 'index']);
+    Route::get('customers/{id}', [CustomerController::class, 'show']);
+    Route::post('customers', [CustomerController::class, 'store']);
+    Route::put('customers/{customer}', [CustomerController::class, 'update']);
+    Route::delete('customers/{customer}', [CustomerController::class, 'destroy']);
+
+    // Customer Users
+    Route::get('customer_users', [CustomerUserController::class, 'index']);
+    Route::get('customer_users/{id}', [CustomerUserController::class, 'show']);
+    Route::post('customer_users', [CustomerUserController::class, 'store']);
+    Route::put('customer_users/{customer_user}', [CustomerUserController::class, 'update']);
+    Route::delete('customer_users/{customer_user}', [CustomerUserController::class, 'destroy']);
+    Route::get('customer_users/customer/{customer_id}', [CustomerUserController::class, 'customerUsersByCustomer']);
 
 });
 
