@@ -18,11 +18,9 @@ class VaccineUrlController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $vaccine_urls = VaccineUrl::all();
+        $vaccine_urls = VaccineUrl::all()->with('us_state')->paginate();
 
-        return VaccineUrlResource::collection($vaccine_urls)
-                                        ->with('us_state')
-                                        ->paginate();
+        return VaccineUrlResource::collection($vaccine_urls)        
     }
 
     /**

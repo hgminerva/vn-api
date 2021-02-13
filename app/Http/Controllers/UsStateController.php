@@ -18,9 +18,9 @@ class UsStateController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $us_states = UsState::all();
+        $us_states = UsState::all()->paginate();
 
-        return UsStateResource::collection($us_states)->paginate();
+        return UsStateResource::collection($us_states);
     }
 
     /**

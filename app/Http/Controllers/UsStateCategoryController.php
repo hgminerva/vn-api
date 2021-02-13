@@ -18,11 +18,10 @@ class UsStateCategoryController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $us_state_categories = UsStateCategory::all();
+        $us_state_categories = UsStateCategory::all()->with('us_state')->paginate();
 
-        return UsStateCategoryResource::collection($us_state_categories)
-                                        ->with('us_state')
-                                        ->paginate();
+        return UsStateCategoryResource::collection($us_state_categories);
+                           
     }
 
     /**
