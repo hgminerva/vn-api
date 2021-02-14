@@ -17,6 +17,7 @@ class UsStateResource extends JsonResource
         return [
             'id' => $this->id,
             'state_name' => $this->state_name,
+            'state_initial' => $this->state_initial,
             'remarks' => $this->remarks
         ];
     }
