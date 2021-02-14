@@ -13,18 +13,36 @@ class CustomerUser extends Model
 
     protected $fillable = [
         'customer_id',
-        'name',
         'user_number',
+
+        'last_name',
+        'first_name',
+        'middle_name',
+        'name',
+        'date_of_birth',
+        'age_group',
+        
         'email',
         'cellphone',
         'address',
         'zipcodes',
+        'home_county',
+
         'distance_willing',
         'keywords',
-        'remarks',
+
         'user_id',
         'us_state_id',
         'us_state_category_id',
+
+        'enrollment_date',
+        'enrollment_out_date',
+        
+        'employment_number',
+        'employment_type',
+        'employment_county',
+
+        'remarks',
         'enabled'
     ];
 
