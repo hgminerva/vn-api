@@ -62,7 +62,7 @@ class CustomerUserController extends Controller
      */
     public function show($id): CustomerUserResource
     {
-        $customer_user = CustomerUser::findOrFail($id);
+        $customer_user = CustomerUser::findOrFail($id)->with('customer','user','us_state','us_state_category');
 
         return new CustomerUserResource($customer_user);
     }

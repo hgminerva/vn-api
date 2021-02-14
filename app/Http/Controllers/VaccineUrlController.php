@@ -46,7 +46,7 @@ class VaccineUrlController extends Controller
      */
     public function show($id): VaccineUrlResource
     {
-        $vaccine_url = VaccineUrl::findOrFail($id);
+        $vaccine_url = VaccineUrl::findOrFail($id)->with('us_state');
 
         return new VaccineUrlResource($vaccine_url);
     }
