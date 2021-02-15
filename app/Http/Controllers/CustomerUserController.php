@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerUserRequest;
 use App\Http\Resources\CustomerUserResource;
 use App\Models\CustomerUser;
+use App\Mail\SendNotificationToUser;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerUserController extends Controller
 {
@@ -36,6 +40,22 @@ class CustomerUserController extends Controller
                                 ->paginate();
 
         return CustomerUserResource::collection($customer_users);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return JsonResponse
+     */
+    public function sendEmailToUser($id): JsonResponse
+    {
+        $customer_user = CustomerUser::findOrFail($id);
+
+        Mail::to($customer_user->email)->send(new SendNotificationToUser($customer_user));
+
+        return response()->json(['status' => 'Mail successfully sent'], Response::HTTP_OK);
     }
 
     /**

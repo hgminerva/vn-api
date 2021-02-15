@@ -88,6 +88,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('customer_users/{customer_user}', [CustomerUserController::class, 'update']);
     Route::delete('customer_users/{customer_user}', [CustomerUserController::class, 'destroy']);
     Route::get('customer_users/customer/{customer_id}', [CustomerUserController::class, 'customerUsersByCustomer']);
+    Route::get('customer_users/email/{id}', [CustomerUserController::class, 'sendEmailToUser']);
 
 });
 
