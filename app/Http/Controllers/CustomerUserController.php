@@ -33,7 +33,6 @@ class CustomerUserController extends Controller
     {
         $customer_users = CustomerUser::with('customer','user','us_state','us_state_category')
                                 ->where('customer_id', $request->customer_id)
-                                ->get()
                                 ->paginate();
 
         return CustomerUserResource::collection($customer_users);
