@@ -14,11 +14,23 @@ class UsStateController extends Controller
     /**
      * Display a listing of the resource.
      *
-    * @return AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
     public function index(): AnonymousResourceCollection
     {
         $us_states = UsState::paginate();
+
+        return UsStateResource::collection($us_states);
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function listAllUSStates(): AnonymousResourceCollection
+    {
+        $us_states = UsState::all();
 
         return UsStateResource::collection($us_states);
     }
