@@ -71,8 +71,8 @@ class CustomerUserController extends Controller
         Nexmo::message()->send([
             // 'to'   => '639178123982',
             'to'   => $customer_user->cellphone,
-            'from' => 'Vonage APIs',
-            'text' => 'Hello from Vonage SMS API.'
+            'from' => 'Vaccine Notifier',
+            'text' => 'You have been notified'
         ]);
 
         return response()->json(['status' => 'SMS successfully sent'], Response::HTTP_OK);
