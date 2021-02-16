@@ -21,7 +21,7 @@ class CustomerUser extends Model
         'name',
         'date_of_birth',
         'age_group',
-        
+
         'email',
         'cellphone',
         'address',
@@ -37,7 +37,7 @@ class CustomerUser extends Model
 
         'enrollment_date',
         'enrollment_out_date',
-        
+
         'employment_number',
         'employment_type',
         'employment_county',

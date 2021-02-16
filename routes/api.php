@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'update']);
     Route::delete('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'destroy']);
     Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryController::class, 'categoriesByUSState']);
-    
+
     // Vaccine Urls
     Route::get('vaccine_urls', [VaccineUrlController::class, 'index']);
     Route::get('vaccine_urls/{id}', [VaccineUrlController::class, 'show']);
@@ -89,6 +89,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('customer_users/{customer_user}', [CustomerUserController::class, 'destroy']);
     Route::get('customer_users/customer/{customer_id}', [CustomerUserController::class, 'customerUsersByCustomer']);
     Route::get('customer_users/email/{id}', [CustomerUserController::class, 'sendEmailToUser']);
-
+    Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
 });
 
