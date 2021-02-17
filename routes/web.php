@@ -35,7 +35,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
                      "Accept: text/xml",
                      "Cache-Control: no-cache",
                      "Pragma: no-cache",
-                     "SOAPAction: http://tempuri.org/Login",
+                     "SOAPAction: \"http://tempuri.org/Login\"",
                      "Content-length: ".strlen($xml_post_string)
                     ); 
 
