@@ -29,6 +29,8 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
                             </soap:body>
                         </soap:envelope>';
 
+    echo $xml_post_string;
+
     $headers = array("Content-type: text/xml;charset=\"utf-8\"",
                      "Accept: text/xml",
                      "Cache-Control: no-cache",
