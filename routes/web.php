@@ -49,11 +49,6 @@ Route::get('/soap/login', function () {
     $response = curl_exec($ch); 
     curl_close($ch);
 
-    $response1 = str_replace("<soap:Body>","",$response);
-    $response2 = str_replace("</soap:Body>","",$response1);
-
-    $parser = simplexml_load_string($response2);
-
-    return response($parser, 200)
+    return response($response, 200)
                   ->header('Content-Type', 'text/plain');
 });
