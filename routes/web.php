@@ -49,6 +49,8 @@ Route::get('/soap/login', function () {
     $response = curl_exec($ch); 
     curl_close($ch);
 
-    return response($response, 200)
+    echo $response;
+
+    return response("Ok", 200)
                   ->header('Content-Type', 'text/plain');
 });
