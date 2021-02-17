@@ -33,8 +33,7 @@ Route::get('/soap/login', function () {
                      "Accept: text/xml",
                      "Cache-Control: no-cache",
                      "Pragma: no-cache",
-                     "SOAPAction: http://tempuri.org/Login", 
-                     "Content-length: length",
+                     "SOAPAction: http://tempuri.org/Login"
                     ); 
 
     $ch = curl_init();
