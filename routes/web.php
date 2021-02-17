@@ -29,7 +29,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
                             </soap:body>
                         </soap:envelope>';
 
-    echo $xml_post_string;
+    //echo $xml_post_string;
 
     $headers = array("Content-type: text/xml;charset=\"utf-8\"",
                      "Accept: text/xml",
@@ -50,7 +50,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
     $response = curl_exec($ch); 
     curl_close($ch);
 
-    echo $response;
+    echo $xml_post_string . "====" . $response;
 
     return response("Ok", 200)
                   ->header('Content-Type', 'text/plain');
