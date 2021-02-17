@@ -36,7 +36,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
                      "Cache-Control: no-cache",
                      "Pragma: no-cache",
                      "SOAPAction: http://tempuri.org/Login",
-                     "Content-Length: 5000"
+                     "Content-Length: 172"
                     ); 
 
     $ch = curl_init();
@@ -51,8 +51,8 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
     $response = curl_exec($ch); 
     curl_close($ch);
 
-    echo $xml_post_string;
+    echo $response;
 
-    return response("Ok", 200)
+    return response("OK", 200)
                   ->header('Content-Type', 'text/plain');
 });
