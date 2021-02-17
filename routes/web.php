@@ -36,7 +36,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
                      "Cache-Control: no-cache",
                      "Pragma: no-cache",
                      "SOAPAction: http://tempuri.org/Login",
-                     "Content-Length: length"
+                     "Content-Length: 5000"
                     ); 
 
     $ch = curl_init();
