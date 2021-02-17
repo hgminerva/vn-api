@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
-    $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx"; 
+    $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx?WSDL"; 
 
     $xml_post_string = '<?xml version="1.0" encoding="utf-8" ?>
                         <soap:envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
