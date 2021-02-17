@@ -21,21 +21,17 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
     $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx"; 
 
     $xml_post_string = '<?xml version="1.0" encoding="utf-8" ?>
-                        <soap:envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-                            <soap:body>
-                                <login xmlns="http://tempuri.org/">
-                                    <empid>'.$employee_id.'</empid>
-                                </login>
-                            </soap:body>
-                        </soap:envelope>';
+                        <soap12:envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+                        <soap12:body>
+                        <login xmlns="http://tempuri.org/">
+                            <empid>'.$employee_id.'</empid>
+                        </login>
+                        </soap12:body>
+                        </soap12:envelope>';
 
     //echo $xml_post_string;
 
-    $headers = array("Content-type: text/xml;charset=\"utf-8\"",
-                     "Accept: text/xml",
-                     "Cache-Control: no-cache",
-                     "Pragma: no-cache",
-                     "SOAPAction: \"http://tempuri.org/Login\"",
+    $headers = array("Content-type: application/soap+xml; charset=utf-8",
                      "Content-length: ".strlen($xml_post_string)
                     ); 
 
