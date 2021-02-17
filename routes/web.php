@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/soap/login', function () {
+    return response('Hello World', 200)
+                  ->header('Content-Type', 'text/plain');
+});
