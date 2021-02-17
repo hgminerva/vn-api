@@ -50,7 +50,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
     $response = curl_exec($ch); 
     curl_close($ch);
 
-    echo $xml_post_string . "====" . $response;
+    echo $response;
 
     return response("Ok", 200)
                   ->header('Content-Type', 'text/plain');
