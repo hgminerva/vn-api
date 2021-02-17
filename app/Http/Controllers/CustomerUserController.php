@@ -108,6 +108,21 @@ class CustomerUserController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $
+     *
+     * @return CustomerUserResource
+     */
+    public function showUserByUserNumber($user_number): CustomerUserResource
+    {
+        $customer_user = CustomerUser::with('customer','user','us_state','us_state_category')
+                                     ->where('user_number', $user_number)->firstOrFail();
+
+        return new CustomerUserResource($customer_user);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -90,5 +90,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('customer_users/customer/{customer_id}', [CustomerUserController::class, 'customerUsersByCustomer']);
     Route::get('customer_users/email/{id}', [CustomerUserController::class, 'sendEmailToUser']);
     Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
+    Route::get('customer_users/user_number/{user_number}', [CustomerUserController::class, 'showUserByUserNumber']);
 });
 
