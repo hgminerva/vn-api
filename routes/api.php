@@ -88,7 +88,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('customers', [CustomerController::class, 'store']);
     Route::put('customers/{customer}', [CustomerController::class, 'update']);
     Route::delete('customers/{customer}', [CustomerController::class, 'destroy']);
-    Route::post('customers/upload_image', [DoctorController::class, 'upload_image']);
     
     // Customer Users
     Route::get('customer_users', [CustomerUserController::class, 'index']);
