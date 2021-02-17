@@ -35,6 +35,9 @@ Route::post('register', RegisterController::class);
 
 Route::get('customer_users/user_number/{user_number}', [CustomerUserController::class, 'showUserByUserNumber']);
 
+Route::get('us_states/list/all', [UsStateController::class, 'listAllUSStates']);
+Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryController::class, 'categoriesByUSState']);
+
 // private route
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('logout', LogoutController::class);
@@ -59,7 +62,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('us_states', [UsStateController::class, 'store']);
     Route::put('us_states/{us_state}', [UsStateController::class, 'update']);
     Route::delete('us_states/{us_state}', [UsStateController::class, 'destroy']);
-    Route::get('us_states/list/all', [UsStateController::class, 'listAllUSStates']);
+    
 
     // US State Categories
     Route::get('us_state_categories', [UsStateCategoryController::class, 'index']);
@@ -67,7 +70,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('us_state_categories', [UsStateCategoryController::class, 'store']);
     Route::put('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'update']);
     Route::delete('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'destroy']);
-    Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryController::class, 'categoriesByUSState']);
+    
 
     // Vaccine Urls
     Route::get('vaccine_urls', [VaccineUrlController::class, 'index']);
