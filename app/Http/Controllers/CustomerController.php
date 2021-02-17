@@ -68,6 +68,12 @@ class CustomerController extends Controller
         return new CustomerResource($customer->refresh());
     }
 
+    public function upload_image(Request $request){
+
+        $result = $request->file('image')->store('public/images');
+        return response()->json(['url' => $result], 200);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
