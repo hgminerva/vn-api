@@ -65,10 +65,11 @@ Route::get('/soap/employee/{id}', function ($id) {
     $output = curl_exec($ch);
     curl_close ($ch);
 
-    $return = NULL;
-    foreach($output as $o => $o_value) {
-        if($o_value->ID == $id) {
-            $return = $o_value;
+    $decoded_output = json_decode($output,true);
+    $return = array();
+    foreach($decoded_output as $key => $value) {
+        if($value->ID == $id) {
+            $return[] = $value;
         }
     }
     
