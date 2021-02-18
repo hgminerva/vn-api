@@ -40,7 +40,15 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
 });
 
 Route::get('/soap/employee/{id}', function ($id) {
-    
+    $data = '<?xml version=\"1.0\" encoding=\"utf-8\"?>
+             <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                           xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                           xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                           <soap:Body>
+                                <ReloadMembers xmlns="http://tempuri.org/" />
+                           </soap:Body>
+             </soap:Envelope>';
+  
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/ReloadMembers');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -56,7 +64,7 @@ Route::get('/soap/employee/{id}', function ($id) {
 
     $output = curl_exec($ch);
     curl_close ($ch);
-
+    
     return response($output, 200)
                   ->header('Content-Type', 'text/plain');
 });
