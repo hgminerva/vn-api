@@ -68,7 +68,7 @@ Route::get('/soap/employee/{id}', function ($id) {
     $decoded_output = json_decode($output,true);
     $return = array();
     foreach($decoded_output as $key => $value) {
-        if($value->ID == $id) {
+        if($value['ID']== $id) {
             $return[] = $value;
         }
     }
