@@ -18,20 +18,12 @@ Route::get('/', function () {
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
-    $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx"; 
-
-    $xml_post_string = '<?xml version="1.0" encoding="utf-8" ?>
-                        <soap12:envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-                        <soap12:body>
-                        <login xmlns="http://tempuri.org/">
-                            <empid>'.$employee_id.'</empid>
-                        </login>
-                        </soap12:body>
-                        </soap12:envelope>';
-
-
-    $headers = array("Content-type: application/soap+xml; charset=utf-8",
-                     "Content-length: ".strlen($xml_post_string)
+    $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login"; 
+    $data_string = json_encode(array("empid"=>$employee_id));
+    $headers = array("Content-type: text/xml; charset=utf-8",
+                     "Content-length: 13",
+                     "User-agent: advanced-rest-client",
+                     "Accept: */*"
                     ); 
 
     $ch = curl_init();
@@ -41,6 +33,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
     $response = curl_exec($ch); 
