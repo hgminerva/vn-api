@@ -35,6 +35,6 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
 
     echo $response;
 
-    return response($data_string, 200)
+    return response($response, 200)
                   ->header('Content-Type', 'text/plain');
 });
