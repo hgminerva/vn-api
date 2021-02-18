@@ -78,11 +78,11 @@ Route::get('/soap/employee/{id}', function ($id) {
 });
 
 Route::get('/script/scrapper', function () {
-    $cmd = 'python3 -u scrape.py';
+    $cmd = '/var/www/scraper/start_scraping.sh';
     while(@ ob_end_flush());
     
     $proc = popen($cmd, 'r');
-    echo 'Scraper v1.0';
+    echo 'START:';
     
     while(!feof($proc)){
         echo fread($proc, 4096);
