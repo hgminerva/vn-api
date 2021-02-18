@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
     $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login"; 
-    $data_string = json_encode(array("empid"=>$employee_id));
+    $data_string = json_encode(array("EmpID"=>$employee_id));
     $headers = array("Content-type: application/x-www-form-urlencoded",
                      "Content-length: 13",
                      "User-agent: advanced-rest-client",
