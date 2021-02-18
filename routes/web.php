@@ -78,8 +78,8 @@ Route::get('/soap/employee/{id}', function ($id) {
 });
 
 Route::get('/script/scrapper', function () {
-    echo shell_exec('sudo /var/www/scraper/start-scraping.sh 2>&1');
-    echo exec("sudo /var/www/scraper/scrape.py 2>&1");
+    // echo shell_exec('sudo /var/www/scraper/start-scraping.sh 2>&1');
+    echo exec("sudo /usr/bin/python3 -u /var/www/scraper/scrape.py 2>&1");
 
 /*     $cmd = '/var/www/scraper/start_scraping.sh';
     while(@ ob_end_flush());
