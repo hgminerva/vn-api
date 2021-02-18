@@ -71,7 +71,7 @@ class CustomerUserController extends Controller
         Nexmo::message()->send([
             // 'to'   => '639178123982',
             'to'   => $customer_user->cellphone,
-            'from' => 'Vaccine Notifier',
+            'from' => 'Vonage APIs',
             'text' => 'You have been notified'
         ]);
 
