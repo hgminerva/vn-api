@@ -57,7 +57,7 @@ Route::get('/soap/employee/{id}', function ($id) {
     curl_setopt($ch, CURLOPT_POST, 1);
     
     $headers = array();
-    $headers[] = 'Content-Type: application/x-www-form-urlencoded"';
+    $headers[] = 'Content-Type: application/soap+xml; charset=utf-8';
     $headers[] = 'Content-Length: 309';
     $headers[] = 'User-Agent: advanced-rest-client';
     $headers[] = 'Accept: */*';
