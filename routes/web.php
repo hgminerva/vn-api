@@ -64,7 +64,14 @@ Route::get('/soap/employee/{id}', function ($id) {
 
     $output = curl_exec($ch);
     curl_close ($ch);
+
+    $return = NULL;
+    foreach($output as $o => $o_value) {
+        if($o_value->ID == $id) {
+            $return = $o_value;
+        }
+    }
     
-    return response($output, 200)
+    return response($return, 200)
                   ->header('Content-Type', 'text/plain');
 });
