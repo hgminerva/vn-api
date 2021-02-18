@@ -78,8 +78,7 @@ Route::get('/soap/employee/{id}', function ($id) {
 });
 
 Route::get('/script/scrapper', function () {
-    $output = shell_exec('/var/www/scraper/start_scraping.sh');
-    echo "<pre>$output</pre>";
+    echo shell_exec('sudo /var/www/scraper/start_scraping.sh 2>&1');
 
 /*     $cmd = '/var/www/scraper/start_scraping.sh';
     while(@ ob_end_flush());
