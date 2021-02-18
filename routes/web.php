@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
-    $data = json_decode(array(
+    $data = json_encode(array(
         "EmpID" => $employee_id
     ));
     $ch = curl_init();
