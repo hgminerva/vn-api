@@ -18,16 +18,34 @@ Route::get('/', function () {
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
-    $data = json_encode(array(
-        "EmpID" => $employee_id
-    ));
+
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login?EmpID=' . $employee_id);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "EmpID=PC12394");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    
+    $headers = array();
+    $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+    $headers[] = 'Content-Length: 13';
+    $headers[] = 'User-Agent: advanced-rest-client';
+    $headers[] = 'Accept: */*';
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    
     $output = curl_exec($ch);
-    curl_close($ch);
+    curl_close ($ch);
+
+
+    // $data = json_encode(array(
+    //     "EmpID" => $employee_id
+    // ));
+    // $ch = curl_init();
+    // curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login?EmpID=' . $employee_id);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_POST, true);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    // $output = curl_exec($ch);
+    // curl_close($ch);
 
     // $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login?EmpID=" . $employee_id; 
     // $headers = array("Content-type: application/x-www-form-urlencoded",
