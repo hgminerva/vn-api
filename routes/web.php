@@ -27,11 +27,7 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
                     ); 
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
     curl_setopt($ch, CURLOPT_URL, $soapUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -41,6 +37,6 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
 
     echo $response;
 
-    return response("OK", 200)
+    return response($data_string, 200)
                   ->header('Content-Type', 'text/plain');
 });
