@@ -41,17 +41,27 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
 
 Route::get('/soap/employee/{id}', function ($id) {
 
+    $data='<?xml version="1.0" encoding="utf-8" ?>
+            <soap12:envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+                <soap12:body>
+                    <membereditget xmlns="http://tempuri.org/">
+                        <id>6</id>
+                    </membereditget>
+                </soap12:body>
+            </soap12:envelope>';
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/MemberEditGet');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=" . $id);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_POST, 1);
     
     $headers = array();
     $headers[] = 'Content-Type: text/xml; charset=utf-8';
-    $headers[] = 'Content-Length: 13';
+    $headers[] = 'Content-Length: 309';
     $headers[] = 'User-Agent: advanced-rest-client';
     $headers[] = 'Accept: */*';
+    $headers[] = 'SOAPAction: "http://tempuri.org/MemberEditGet"';
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     
     $output = curl_exec($ch);
