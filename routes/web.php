@@ -42,9 +42,8 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
 Route::get('/soap/employee/{id}', function ($id) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/MemberEditGet');
+    curl_setopt($ch, CURLOPT_URL, 'https://www.mypinnaclecare.com:9443/VaxSvc.asmx/MemberEditGet/' + $id);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=" . $id);
     
     $headers = array();
     $headers[] = 'Content-Type: text/xml; charset=utf-8';
