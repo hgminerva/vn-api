@@ -18,8 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
-    $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login"; 
-    $data_string = json_encode(array("EmpID"=>$employee_id));
+    $soapUrl = "https://www.mypinnaclecare.com:9443/VaxSvc.asmx/Login?EmpID=" . $employee_id; 
     $headers = array("Content-type: application/x-www-form-urlencoded",
                      "Content-length: 13",
                      "User-agent: advanced-rest-client",
@@ -29,7 +28,6 @@ Route::get('/soap/login/{employee_id}', function ($employee_id) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $soapUrl);
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
     $response = curl_exec($ch); 
