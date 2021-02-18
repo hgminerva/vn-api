@@ -78,7 +78,10 @@ Route::get('/soap/employee/{id}', function ($id) {
 });
 
 Route::get('/script/scrapper', function () {
-    $cmd = '/var/www/scraper/start_scraping.sh';
+    $output = shell_exec('/var/www/scraper/start_scraping.sh');
+    echo "<pre>$output</pre>";
+
+/*     $cmd = '/var/www/scraper/start_scraping.sh';
     while(@ ob_end_flush());
     
     $proc = popen($cmd, 'r');
@@ -90,5 +93,5 @@ Route::get('/script/scrapper', function () {
     }
     
     echo '<br>';
-    pclose($proc);
+    pclose($proc); */
 });
