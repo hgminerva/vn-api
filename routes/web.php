@@ -76,3 +76,19 @@ Route::get('/soap/employee/{id}', function ($id) {
     return response($return, 200)
                   ->header('Content-Type', 'text/plain');
 });
+
+Route::get('/script/scrapper', function () {
+    $cmd = 'python3 -u scrape.py';
+    while(@ ob_end_flush());
+    
+    $proc = popen($cmd, 'r');
+    echo 'Scraper v1.0';
+    
+    while(!feof($proc)){
+        echo fread($proc, 4096);
+        @ flush();
+    }
+    
+    echo '<br>';
+    pclose($proc);
+});
