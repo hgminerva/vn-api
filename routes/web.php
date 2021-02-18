@@ -70,7 +70,7 @@ Route::get('/soap/employee/{id}', function ($id) {
     curl_setopt($ch, CURLOPT_POST, 1);
     
     $headers = array();
-    $headers[] = 'Content-Type: text/xml; charset=\"utf-8\"';
+    //$headers[] = 'Content-Type: text/xml; charset=\"utf-8\"';
     $headers[] = 'SOAPAction: \"http://tempuri.org/MemberEditGet\"';
     $headers[] = 'Content-Length: 309';
     $headers[] = 'user-agent: advanced-rest-client';
