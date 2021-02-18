@@ -71,7 +71,7 @@ class CustomerUserController extends Controller
         Nexmo::message()->send([
             // 'to'   => '639178123982',
             'to'   => $customer_user->cellphone,
-            'from' => 'Vonage APIs',
+            'from' => '+12013553975',
             'text' => 'You have been notified'
         ]);
 
