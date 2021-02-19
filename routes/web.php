@@ -81,17 +81,26 @@ Route::get('/script/scrapper', function () {
     // echo shell_exec('sudo /var/www/scraper/start-scraping.sh 2>&1');
     // echo exec("sudo /usr/bin/python3 -u /var/www/scraper/scrape.py 2>&1");
 
-    $cmd = 'sudo /usr/bin/python3 -u /var/www/scraper/scrape.py 2>&';
-    while(@ ob_end_flush());
+    // $cmd = 'sudo /usr/bin/python3 -u /var/www/scraper/scrape.py 2>&';
+    // while(@ ob_end_flush());
     
-    $proc = popen($cmd, 'r');
-    echo 'START:';
+    // $proc = popen($cmd, 'r');
+    // echo 'START:';
     
-    while(!feof($proc)){
-        echo fread($proc, 4096);
-        @ flush();
+    // while(!feof($proc)){
+    //     echo fread($proc, 4096);
+    //     @ flush();
+    // }
+    
+    // echo '<br>';
+    // pclose($proc);
+
+    $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
+    
+    while($b = fgets($a, 2048)) { 
+        echo $b."<br>\n"; 
+        ob_flush();flush(); 
     }
-    
-    echo '<br>';
-    pclose($proc);
+
+    pclose($a); 
 });
