@@ -106,13 +106,25 @@ Route::get('/script/scrapper', function () {
 
 
 
-    header( 'Content-type: text/html; charset=utf-8' );
-    $handle = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
-    echo "hi";
-    while (!feof($handle)) {
-            echo fgets($handle);
-            flush();
-            ob_flush();
+    // header( 'Content-type: text/html; charset=utf-8' );
+    // $handle = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
+    // echo "hi";
+    // while (!feof($handle)) {
+    //         echo fgets($handle);
+    //         flush();
+    //         ob_flush();
+    // }
+    // pclose($handle);
+
+
+    while (@ ob_end_flush()); // end all output buffers if any
+    $proc = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
+    echo '<pre>';
+    while (!feof($proc))
+    {
+        echo fread($proc, 4096);
+        echo '<br>';
+        @ flush();
     }
-    pclose($handle);
+    echo '</pre>';
 });
