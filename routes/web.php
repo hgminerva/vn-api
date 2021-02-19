@@ -77,56 +77,12 @@ Route::get('/soap/employee/{id}', function ($id) {
                   ->header('Content-Type', 'text/plain');
 });
 
-Route::get('/script/scrapper', function () {
-    // echo shell_exec('sudo /var/www/scraper/start-scraping.sh 2>&1');
-    // echo exec("sudo /usr/bin/python3 -u /var/www/scraper/scrape.py 2>&1");
-
-    // $cmd = 'sudo /usr/bin/python3 -u /var/www/scraper/scrape.py 2>&';
-    // while(@ ob_end_flush());
-    
-    // $proc = popen($cmd, 'r');
-    // echo 'START:';
-    
-    // while(!feof($proc)){
-    //     echo fread($proc, 4096);
-    //     @ flush();
-    // }
-    
-    // echo '<br>';
-    // pclose($proc);
-
+Route::get('/soap/scrapper', function () {
     header('X-Accel-Buffering: no');
     $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
-    
     while($b = fgets($a, 2048)) { 
         echo $b."<br>\n"; 
         ob_flush();flush(); 
     }
-
     pclose($a); 
-
-
-
-    // header( 'Content-type: text/html; charset=utf-8' );
-    // $handle = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
-    // echo "hi";
-    // while (!feof($handle)) {
-    //         echo fgets($handle);
-    //         flush();
-    //         ob_flush();
-    // }
-    // pclose($handle);
-
-
-    // while (@ ob_end_flush()); // end all output buffers if any
-    // $proc = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
-    // echo '<pre>';
-    // while (!feof($proc))
-    // {
-    //     echo fread($proc, 4096);
-    //     echo '<br>';
-    //     @ flush();
-    // }
-    // echo '</pre>';
-
 });
