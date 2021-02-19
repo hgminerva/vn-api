@@ -95,12 +95,21 @@ Route::get('/script/scrapper', function () {
     // echo '<br>';
     // pclose($proc);
 
-    $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
+    // $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
     
-    while($b = fgets($a, 2048)) { 
-        echo $b."<br>\n"; 
-        ob_flush();flush(); 
-    }
+    // while($b = fgets($a, 2048)) { 
+    //     echo $b."<br>\n"; 
+    //     ob_flush();flush(); 
+    // }
 
-    pclose($a); 
+    // pclose($a); 
+
+    header( 'Content-type: text/html; charset=utf-8' );
+    $handle = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
+    while (!feof($handle)) {
+            echo fgets($handle);
+            flush();
+            ob_flush();
+    }
+    pclose($handle);
 });
