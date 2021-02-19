@@ -117,14 +117,21 @@ Route::get('/script/scrapper', function () {
     // pclose($handle);
 
 
-    while (@ ob_end_flush()); // end all output buffers if any
-    $proc = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
-    echo '<pre>';
-    while (!feof($proc))
-    {
-        echo fread($proc, 4096);
-        echo '<br>';
-        @ flush();
+    // while (@ ob_end_flush()); // end all output buffers if any
+    // $proc = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
+    // echo '<pre>';
+    // while (!feof($proc))
+    // {
+    //     echo fread($proc, 4096);
+    //     echo '<br>';
+    //     @ flush();
+    // }
+    // echo '</pre>';
+
+    for ($i = 1; $i <= 10; $i++)
+    {   
+        echo '<p>' . $i . '</p>';
+        flush();
+        sleep(1);
     }
-    echo '</pre>';
 });
