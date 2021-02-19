@@ -108,7 +108,7 @@ Route::get('/script/scrapper', function () {
 
     header( 'Content-type: text/html; charset=utf-8' );
     $handle = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r');
-    echo "hi"
+    echo "hi";
     while (!feof($handle)) {
             echo fgets($handle);
             flush();
