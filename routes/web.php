@@ -127,7 +127,7 @@ Route::get('/script/scrapper', function () {
     //     @ flush();
     // }
     // echo '</pre>';
-
+    header('X-Accel-Buffering: no');
     for ($i = 1; $i <= 10; $i++)
     {   
         echo '<p>' . $i . '</p>';
