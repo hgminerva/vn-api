@@ -36,6 +36,6 @@ class SendNotificationToUser extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.sendnotification');
+        return $this->subject("Vaccine Tracker Notification")->view('mail.sendnotification');
     }
 }
