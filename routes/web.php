@@ -95,14 +95,15 @@ Route::get('/script/scrapper', function () {
     // echo '<br>';
     // pclose($proc);
 
-    // $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
+    header('X-Accel-Buffering: no');
+    $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
     
-    // while($b = fgets($a, 2048)) { 
-    //     echo $b."<br>\n"; 
-    //     ob_flush();flush(); 
-    // }
+    while($b = fgets($a, 2048)) { 
+        echo $b."<br>\n"; 
+        ob_flush();flush(); 
+    }
 
-    // pclose($a); 
+    pclose($a); 
 
 
 
@@ -127,11 +128,5 @@ Route::get('/script/scrapper', function () {
     //     @ flush();
     // }
     // echo '</pre>';
-    header('X-Accel-Buffering: no');
-    for ($i = 1; $i <= 10; $i++)
-    {   
-        echo '<p>' . $i . '</p>';
-        flush();
-        sleep(1);
-    }
+
 });
