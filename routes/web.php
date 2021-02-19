@@ -77,7 +77,7 @@ Route::get('/soap/employee/{id}', function ($id) {
                   ->header('Content-Type', 'text/plain');
 });
 
-Route::get('/soap/scrapper', function () {
+Route::get('/script/scraper', function () {
     header('X-Accel-Buffering: no');
     $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py', 'r'); 
     while($b = fgets($a, 2048)) { 
