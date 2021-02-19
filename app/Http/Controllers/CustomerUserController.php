@@ -72,7 +72,7 @@ class CustomerUserController extends Controller
             // 'to'   => '639178123982',
             'to'   => $customer_user->cellphone,
             'from' => '12013553975',
-            'text' => 'You have been notified'
+            'text' => 'Vaccine Tracker: Match Found.  Login to your account to view result.'
         ]);
 
         return response()->json(['status' => 'SMS successfully sent'], Response::HTTP_OK);

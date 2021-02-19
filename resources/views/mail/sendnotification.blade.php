@@ -4,6 +4,6 @@
 <h3>Good day! {{ $customer_user->name }}</h3>
 
 <div>
-    You are notified.
+    Vaccine Tracker:  You have the following match results:
 </div>
 @endsection
