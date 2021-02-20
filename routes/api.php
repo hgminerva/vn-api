@@ -18,6 +18,7 @@ use App\Http\Controllers\UsStateCategoryController;
 use App\Http\Controllers\VaccineUrlController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerUserController;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -96,5 +97,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('customer_users/{customer_user}', [CustomerUserController::class, 'update']);
     Route::delete('customer_users/{customer_user}', [CustomerUserController::class, 'destroy']);
     Route::get('customer_users/customer/{customer_id}', [CustomerUserController::class, 'customerUsersByCustomer']);
+
+    // Notifications
+    Route::get('notifications', [NotificationController::class, 'index']);
+    Route::get('notifications/{id}', [NotificationController::class, 'show']);
+    Route::post('notifications', [NotificationController::class, 'store']);
+    Route::put('notifications/{notification}', [NotificationController::class, 'update']);
+    Route::delete('notifications/{notification}', [NotificationController::class, 'destroy']);
+    Route::get('notifications/customer_user/{customer_user_id}', [NotificationController::class, 'notificationsByCustomerUser']);
+    Route::get('notifications/batch_number/{batch_number}', [NotificationController::class, 'showNotificationByBatchNumber']);
 });
 
