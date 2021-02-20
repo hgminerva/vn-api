@@ -4,9 +4,9 @@
 
 <div class="banner" style="background-color: #f0f0f0; padding: 45px 0px; font-family: avenir !important; height: 100%">
 <div style="width: 600px; margin: 0px auto;text-align: center; ">
-<div style="background-image: url(banner-dark.png);background-position: center center; height: 175px;background-repeat: no-repeat;background-size: contain;">
+<div style="background-image: url('https://vt.pinnaclecare.com/assets/img/email/banner-dark.png');background-position: center center; height: 175px;background-repeat: no-repeat;background-size: contain;">
 <div style="clear:both; height:100px; "></div>
-<img style="margin-left: 25px; margin-bottom: -10px; height: 40px; float: left;" src="https://vt.pinnaclecare.com/assets/img/company_logo/pc5.png" />
+<img style="margin-left: 25px; margin-bottom: -10px; height: 40px; float: left;" src="https://vt.pinnaclecare.com/assets/img/email/logo.jpg" />
 <div style="clear:both; height:1px;"></div>
 <div style="text-align:left !important; padding-left: 120px !important; font-size:15px;font-family: calibri; color: #fffffe;">Vaccine Tracker Notification</div>
 </div>
