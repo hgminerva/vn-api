@@ -3,6 +3,8 @@
 namespace App\Mail;
 
 use App\Models\CustomerUser;
+use App\Models\Notification;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -20,7 +22,7 @@ class SendNotificationToUser extends Mailable
     public $customer_user;
 
     /**
-     * The customer user instance.
+     * The notifications instance.
      *
      * @var Notifications
      */
