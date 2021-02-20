@@ -9,7 +9,7 @@ class Notification extends Model
 {
     use HasFactory;
 
-    public $table = 'customer_users';
+    public $table = 'notifications';
 
     protected $fillable = [
         'batch_number',
