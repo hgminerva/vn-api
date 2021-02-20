@@ -20,13 +20,24 @@ class SendNotificationToUser extends Mailable
     public $customer_user;
 
     /**
+     * The customer user instance.
+     *
+     * @var Notifications
+     */
+    public $notifications;
+
+    /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(CustomerUser $customer_user)
+    public function __construct(CustomerUser $customer_user, string $batch_number)
     {
         $this->customer_user = $customer_user;
+
+        $this->notifications = Notification::with('customer_user','vaccine_url')
+                                           ->where('batch_number', $request->batch_number)
+                                           ->get();
     }
 
     /**

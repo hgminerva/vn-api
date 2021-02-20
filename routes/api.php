@@ -39,7 +39,7 @@ Route::get('customer_users/user_number/{user_number}', [CustomerUserController::
 Route::get('us_states/list/all', [UsStateController::class, 'listAllUSStates']);
 Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryController::class, 'categoriesByUSState']);
 
-Route::get('customer_users/email/{id}', [CustomerUserController::class, 'sendEmailToUser']);
+Route::get('customer_users/email/{id}/{batch_number}', [CustomerUserController::class, 'sendEmailToUser']);
 Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
 
 // private route
@@ -105,6 +105,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('notifications/{notification}', [NotificationController::class, 'update']);
     Route::delete('notifications/{notification}', [NotificationController::class, 'destroy']);
     Route::get('notifications/customer_user/{customer_user_id}', [NotificationController::class, 'notificationsByCustomerUser']);
-    Route::get('notifications/batch_number/{batch_number}', [NotificationController::class, 'showNotificationByBatchNumber']);
+    Route::get('notifications/batch_number/{batch_number}', [NotificationController::class, 'notificationsByBatchNumber']);
 });
 

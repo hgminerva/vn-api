@@ -35,7 +35,22 @@ class NotificationController extends Controller
     public function notificationsByCustomerUser(NotificationRequest $request): AnonymousResourceCollection
     {
         $notifications = Notification::with('customer_user','vaccine_url')
-                                     ->where('customer_user_id', $request->customer_user_id);
+                                     ->where('customer_user_id', $request->customer_user_id)
+                                     ->paginate();
+
+        return NotificationResource::collection($notifications);
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function notificationsByBatchNumber(NotificationRequest $request): AnonymousResourceCollection
+    {
+        $notifications = Notification::with('customer_user','vaccine_url')
+                                     ->where('batch_number', $request->batch_number)
+                                     ->paginate();
 
         return NotificationResource::collection($notifications);
     }
@@ -65,21 +80,6 @@ class NotificationController extends Controller
     {
         $notification = Notification::with('customer_user','vaccine_url')
                                     ->findOrFail($id);
-
-        return new NotificationResource($notification);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $
-     *
-     * @return NotificationResource
-     */
-    public function showNotificationByBatchNumber($batch_number): NotificationResource
-    {
-        $notification = Notification::with('customer_user','vaccine_url')
-                                     ->where('batch_number', $batch_number)->firstOrFail();
 
         return new NotificationResource($notification);
     }

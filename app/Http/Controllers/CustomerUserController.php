@@ -48,11 +48,11 @@ class CustomerUserController extends Controller
      *
      * @return JsonResponse
      */
-    public function sendEmailToUser($id): JsonResponse
+    public function sendEmailToUser($id, $batch_number): JsonResponse
     {
         $customer_user = CustomerUser::findOrFail($id);
 
-        Mail::to($customer_user->email)->send(new SendNotificationToUser($customer_user));
+        Mail::to($customer_user->email)->send(new SendNotificationToUser($customer_user, $batch_number));
 
         return response()->json(['status' => 'Mail successfully sent'], Response::HTTP_OK);
     }
