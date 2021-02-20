@@ -6,7 +6,7 @@
 <div style="width: 600px; margin: 0px auto;text-align: center; ">
 <div style="background-image: url(banner-dark.png);background-position: center center; height: 175px;background-repeat: no-repeat;background-size: contain;">
 <div style="clear:both; height:100px; "></div>
-<img style="margin-left: 25px; margin-bottom: -10px; height: 40px; float: left;" src="logo.png" />
+<img style="margin-left: 25px; margin-bottom: -10px; height: 40px; float: left;" src="https://vt.pinnaclecare.com/assets/img/company_logo/pc5.png" />
 <div style="clear:both; height:1px;"></div>
 <div style="text-align:left !important; padding-left: 120px !important; font-size:15px;font-family: calibri; color: #fffffe;">Vaccine Tracker Notification</div>
 </div>
@@ -35,19 +35,20 @@
 		</div>
 	</div>
 	<div style="clear:both; height:10px;"></div>
-	<!-- Loop Here -->
-	<div style="margin-top:30px;border: solid #e6e6e6 1px; padding: 25px;background-color: #fafafa;">
-		<div style="font-size: 12px!important; font-weight: 900!important;">
-			<div style="text-align:left;">[Provider Name]</div>
-			<div style="text-align:left">Address [Address]</div>
-			<div style="text-align:left">Date: [Date Posted]&nbsp;&nbsp;&nbsp;&nbsp;Time: [Time Posted]</div>
+	@foreach($notifications as $notification)
+		<div style="margin-top:30px;border: solid #e6e6e6 1px; padding: 25px;background-color: #fafafa;">
+			<div style="font-size: 12px!important; font-weight: 900!important;">
+				<div style="text-align:left;">{{ $notification->vaccine_url->url_address }} </div>
+				<div style="text-align:left">Zip Code: {{ $notification->vaccine_url->zipcodes }}</div>
+				<div style="text-align:left">Date: {{ $notification->batch_date }} &nbsp;&nbsp;&nbsp;&nbsp;Time: {{ $notification->batch_time }}</div>
+			</div>
+			<div style="clear:both; height:15px;"></div>
+			<div style="font-size:13px;  ">{{ $notification->vaccine_url->current_content }} </div>
+			<div style="clear:both; height:10px;"></div>
+			<button style="background-color: #5b5e65;border: none; height:30px; width: 120px;color: #fff"><a href="{{$notification->vaccine_url->url_address}}" style="text-decoration: none;color: #fff;">Page Link</a></button >&nbsp;&nbsp;
+			<button style="background-color: #14b46c;border: none; height:30px; width: 150px;color: #fff;"><a href="{{$notification->vaccine_url->url_address}}" style="text-decoration: none;color: #fff;">Registration Link</a></button>
 		</div>
-		<div style="clear:both; height:15px;"></div>
-		<div style="font-size:13px;  ">Content Here</div>
-		<div style="clear:both; height:10px;"></div>
-		<button style="background-color: #5b5e65;border: none; height:30px; width: 120px;color: #fff"><a href="/" style="text-decoration: none;color: #fff;">Page Link</a></button >&nbsp;&nbsp;<button style="background-color: #14b46c;border: none; height:30px; width: 150px;color: #fff;"><a href="/" style="text-decoration: none;color: #fff;">Registration Link</a></button>
-	</div>
-	<!-- Loop Here -->
+	@endforeach
 </div>
 
 <!-- Footer -->
