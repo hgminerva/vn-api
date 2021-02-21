@@ -38,7 +38,7 @@ class SendNotificationToUser extends Mailable
         $this->customer_user = $customer_user;
 
         $this->notifications = Notification::with('customer_user','vaccine_url')
-                                           ->where(['batch_number' => $batch_number, 'customer_user_id' => $customer_user_id])
+                                           ->where(['batch_number' => $batch_number, 'customer_user_id' => $customer_user->id])
                                            ->get();
     }
 
