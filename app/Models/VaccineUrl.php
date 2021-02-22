@@ -18,6 +18,9 @@ class VaccineUrl extends Model
         'previous_content',
         'zipcodes',
         'remarks',
+        'description',
+        'state_initial',
+        'category',
         'enabled'
     ];
 

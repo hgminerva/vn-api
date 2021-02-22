@@ -23,6 +23,9 @@ class VaccineUrlResource extends JsonResource
             'previous_content' => $this->previous_content,
             'zipcodes' => $this->zipcodes,
             'remarks' => $this->remarks,
+            'description' => $this->description,
+            'state_initial' => $this->state_initial,
+            'category' => $this->category,
             'enabled' => $this->enabled
         ];
     }
