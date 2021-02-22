@@ -24,6 +24,18 @@ class VaccineUrlController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function listAllVaccineURL(): AnonymousResourceCollection
+    {
+        $vaccine_urls = VaccineUrl::with('us_state')->orderBy('id', 'DESC')->get();
+
+        return VaccineUrlResource::collection($vaccine_urls); 
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

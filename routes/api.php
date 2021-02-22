@@ -82,6 +82,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('vaccine_urls', [VaccineUrlController::class, 'store']);
     Route::put('vaccine_urls/{vaccine_url}', [VaccineUrlController::class, 'update']);
     Route::delete('vaccine_urls/{vaccine_url}', [VaccineUrlController::class, 'destroy']);
+    Route::get('vaccine_urls/list/all', [VaccineUrlController::class, 'listAllVaccineURL']);
 
     // Customers
     Route::get('customers', [CustomerController::class, 'index']);
