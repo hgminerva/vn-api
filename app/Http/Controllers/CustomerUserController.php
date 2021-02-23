@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerUserRequest;
 use App\Http\Resources\CustomerUserResource;
+
 use App\Mail\SendNotificationToUser;
+
 use App\Models\CustomerUser;
+use App\Models\VaccineUrl;
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -42,7 +46,7 @@ class CustomerUserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Send email to user
      *
      * @param  int  $id
      *
@@ -58,7 +62,7 @@ class CustomerUserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Send sms to user
      *
      * @param  int  $id
      *
@@ -76,6 +80,36 @@ class CustomerUserController extends Controller
         ]);
 
         return response()->json(['status' => 'SMS successfully sent'], Response::HTTP_OK);
+    }
+
+    /**
+     * Notify the user initially
+     *
+     * @param  int  $id
+     *
+     * @return JsonResponse
+     */
+    public function notifyUser($id): JsonResponse {
+        $vaccine_urls = VaccineUrl::with('us_state')->orderBy('id', 'DESC')->get();
+        $customer_user = CustomerUser::findOrFail($id);
+
+        if($customer_user) {
+            foreach($vaccine_urls as $vaccine_url) {
+
+                # Get the zipcode distance
+                $zipcodes = explode(',', $customer_user->zipcodes);
+                if(count($zipcodes) > 0) {
+                    foreach($zipcodes as $zipcode) {
+                        if($zipcode) {
+                            $z = explode('|', $zipcode);
+                            echo $z[1];
+                        }
+                    }
+                }
+            }
+        }
+
+        return response()->json(['status' => 'Notification complete'], Response::HTTP_OK);
     }
 
     /**

@@ -41,6 +41,7 @@ Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryControl
 
 Route::get('customer_users/email/{id}/{batch_number}', [CustomerUserController::class, 'sendEmailToUser']);
 Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
+Route::get('customer_users/notify/{id}', [CustomerUserController::class, 'notifyUser']);
 
 // private route
 Route::group(['middleware' => 'auth:sanctum'], function () {
