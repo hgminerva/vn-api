@@ -101,7 +101,10 @@ class CustomerUserController extends Controller
                 foreach($zipcodes as $zipcode) {
                     if(count($zipcodes) > 0) {
                         foreach($zipcodes as $z) {
-                            echo $z;
+                            if($z) {
+                                $code = explode('|', $z);
+                                echo $code[1];
+                            }
                         }
                     }
                     echo "\n\r";
