@@ -99,7 +99,12 @@ class CustomerUserController extends Controller
                 # Get the zipcode distance
                 $zipcodes = explode(',', $customer_user->zipcodes);
                 foreach($zipcodes as $zipcode) {
-                    echo $zipcode + "\n\r";
+                    if(count($zipcodes) > 0) {
+                        foreach($zipcodes as $z) {
+                            echo $z
+                        }
+                    }
+                    echo "\n\r";
                 }
 
 /*                 if(count($zipcodes) > 0) {
