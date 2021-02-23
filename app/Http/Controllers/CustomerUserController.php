@@ -97,6 +97,7 @@ class CustomerUserController extends Controller
             foreach($vaccine_urls as $vaccine_url) {
 
                 # Get the zipcode distance
+                $distance_flag = false;
                 $zipcodes = explode(',', $customer_user->zipcodes);
                 foreach($zipcodes as $zipcode) {
                     if(count($zipcodes) > 0) {
@@ -109,18 +110,8 @@ class CustomerUserController extends Controller
                     }
                     echo "\n\r";
                 }
-
-/*                 if(count($zipcodes) > 0) {
-                    foreach($zipcodes as $zipcode) {
-                        if($zipcode) {
-                            $z = explode('|', $zipcode);
-                            echo $z[1];
-                        }
-                    }
-                } */
             }
         }
-
         return response()->json(['status' => 'Notification complete'], Response::HTTP_OK);
     }
 
