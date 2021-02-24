@@ -84,5 +84,6 @@ Route::get('/script/scraper/{id}', function ($id) {
         echo $b."<br>\n"; 
         ob_flush();flush(); 
     }
+    echo "<script>window.open(location, '_self').close();</script>";
     pclose($a); 
 });

@@ -68,7 +68,7 @@ class VaccineUrlController extends Controller
      *
      * @return AnonymousResourceCollection
      */
-    public function query(): AnonymousResourceCollection
+    public function query(VaccineUrlRequest $request): AnonymousResourceCollection
     {
         $query = VaccineUrl::query();
         $availableFilters = collect($this->filters())
