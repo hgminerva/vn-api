@@ -16,7 +16,7 @@ class SearchVaccineUrl
      */
     public function handle(Builder $query, $value)
     {
-        return $query->orWhere('discription','like', '%' . $value . '%')
+        return $query->orWhere('description','like', '%' . $value . '%')
             ->orWhere('state_initial','like', '%' . $value . '%')
             ->orWhere('remarks','like', '%' . $value . '%');
     }
