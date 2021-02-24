@@ -80,7 +80,7 @@ class VaccineUrlController extends Controller
             $query = (new $filter)->handle($query, $request->get($key));
         }
 
-        $$vaccine_urls = $query->with('us_state')->paginate();
+        $vaccine_urls = $query->with('us_state')->paginate();
 
         return VaccineUrlResource::collection($vaccine_urls);
     }
