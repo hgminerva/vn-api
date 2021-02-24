@@ -4,7 +4,7 @@ namespace App\SearchFilters;
 
 use Illuminate\Database\Eloquent\Builder;
 
-class SearchParamFilter
+class SearchVaccineUrl
 {
     /**
      * This handles the "search" parameter filter.
@@ -16,8 +16,8 @@ class SearchParamFilter
      */
     public function handle(Builder $query, $value)
     {
-        return $query->orWhere('job_posting_title','like', '%' . $value . '%')
-            ->orWhere('job_title','like', '%' . $value . '%')
-            ->orWhere('description','like', '%' . $value . '%');
+        return $query->orWhere('discription','like', '%' . $value . '%')
+            ->orWhere('state_initial','like', '%' . $value . '%')
+            ->orWhere('remarks','like', '%' . $value . '%');
     }
 }
