@@ -85,4 +85,5 @@ Route::get('/script/scraper/{id}', function ($id) {
         ob_flush();flush(); 
     }
     pclose($a); 
+    echo '<script>parent.postMessage("Done","*");</script>';
 });
