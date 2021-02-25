@@ -30,7 +30,7 @@ class UsStateController extends Controller
      */
     public function listAllUSStates(): AnonymousResourceCollection
     {
-        $us_states = UsState::orderBy('state_name')->all();
+        $us_states = UsState::orderBy('state_name')->get();
 
         return UsStateResource::collection($us_states);
     }
