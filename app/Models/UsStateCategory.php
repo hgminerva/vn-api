@@ -14,7 +14,8 @@ class UsStateCategory extends Model
     protected $fillable = [
         'us_state_id',
         'category',
-        'description'
+        'description',
+        'question'
     ];
 
     public function us_state()

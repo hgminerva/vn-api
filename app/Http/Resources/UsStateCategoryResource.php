@@ -19,7 +19,8 @@ class UsStateCategoryResource extends JsonResource
             'us_state_id' => $this->us_state_id,
             'us_state' => new UsStateResource($this->whenLoaded('us_state')),
             'category' => $this->category,
-            'description' => $this->description
+            'description' => $this->description,
+            'question' => $this->question
         ];
     }
 }
