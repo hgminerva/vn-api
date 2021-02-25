@@ -18,7 +18,7 @@ class UsStateController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $us_states = UsState::sortBy('state_name')->paginate();
+        $us_states = UsState::orderBy('state_name')->paginate();
 
         return UsStateResource::collection($us_states);
     }
@@ -30,7 +30,7 @@ class UsStateController extends Controller
      */
     public function listAllUSStates(): AnonymousResourceCollection
     {
-        $us_states = UsState::all()->sortBy('state_name');
+        $us_states = UsState::all()->orderBy('state_name');
 
         return UsStateResource::collection($us_states);
     }
