@@ -71,10 +71,11 @@ class CustomerUserController extends Controller
     public function sendSmsToUser($id): JsonResponse
     {
         $customer_user = CustomerUser::findOrFail($id);
+        $cellphone = "1" . $customer_user->cellphone;
 
         Nexmo::message()->send([
             // 'to'   => '639178123982',
-            'to'   => $customer_user->cellphone,
+            'to'   => $cellphone,
             'from' => '12013553975',
             'text' => 'Vaccine Tracker: Match Found.  To view result go to https://tinyurl.com/saee40jk'
         ]);
