@@ -14,7 +14,7 @@ class AddQuestionToUsStateCategoriesTable extends Migration
     public function up()
     {
         Schema::table('us_state_categories', function (Blueprint $table) {
-            $table->text('question')->default('-');
+            $table->text('question');
         });
     }
 
