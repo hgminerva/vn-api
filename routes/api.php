@@ -18,6 +18,7 @@ use App\Http\Controllers\UsStateCategoryController;
 use App\Http\Controllers\VaccineUrlController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerUserController;
+use App\Http\Controllers\DependentController;
 use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('customer_users/{customer_user}', [CustomerUserController::class, 'update']);
     Route::delete('customer_users/{customer_user}', [CustomerUserController::class, 'destroy']);
     Route::get('customer_users/customer/{customer_id}', [CustomerUserController::class, 'customerUsersByCustomer']);
+
+    // Dependents
+    Route::get('dependents', [DependentController::class, 'index']);
+    Route::get('dependents/{id}', [DependentController::class, 'show']);
+    Route::post('dependents', [DependentController::class, 'store']);
+    Route::put('dependents/{dependent}', [DependentController::class, 'update']);
+    Route::delete('dependents/{dependent}', [DependentController::class, 'destroy']);
+    Route::get('dependents/user/{customer_user_id}', [DependentController::class, 'dependentsByUser']);
 
     // Notifications
     Route::get('notifications', [NotificationController::class, 'index']);
