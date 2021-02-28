@@ -38,6 +38,7 @@
 	@foreach($notifications as $notification)
 		<div style="margin-top:30px;border: solid #e6e6e6 1px; padding: 25px;background-color: #fafafa;">
 			<div style="font-size: 12px!important; font-weight: 900!important;">
+				<div style="text-align:left;">{{ $notification->vaccine_url->description }} </div>
 				<div style="text-align:left;">{{ $notification->vaccine_url->url_address }} </div>
 				<div style="text-align:left">Zip Code: {{ $notification->vaccine_url->zipcodes }}</div>
 				<div style="text-align:left">Date: {{ $notification->batch_date }} &nbsp;&nbsp;&nbsp;&nbsp;Time: {{ $notification->batch_time }}</div>
