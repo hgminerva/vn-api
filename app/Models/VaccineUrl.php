@@ -12,14 +12,23 @@ class VaccineUrl extends Model
     public $table = 'vaccine_urls';
 
     protected $fillable = [
-        'us_state_id',
+        'description',
         'url_address',
+        'url_registration',
+        'site_message',
+        'phase_served',
+        'last_updated',
         'current_content',
         'previous_content',
-        'zipcodes',
         'remarks',
-        'description',
+        'can_scrape',
+        
+        'us_state_id',
         'state_initial',
+        'county',
+        'zipcodes',
+        
+        'status',
         'category',
         'enabled'
     ];
