@@ -80,9 +80,13 @@ Route::get('/soap/employee/{id}', function ($id) {
 Route::get('/script/scraper/{id}', function ($id) {
     header('X-Accel-Buffering: no');
     $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/scrape.py ' . $id, 'r'); 
+    $counter = 0;
     while($b = fgets($a, 2048)) { 
         echo $b."<br>\n"; 
         ob_flush();flush(); 
+        $counter++;
+
+        echo '<script>parent.postMessage("' . str(counter) . '","*");</script>';
     }
     pclose($a); 
     echo '<script>parent.postMessage("Done","*");</script>';
