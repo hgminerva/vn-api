@@ -34,9 +34,20 @@ class VaccineUrlController extends Controller
      */
     public function listAllVaccineURL(): AnonymousResourceCollection
     {
-        $vaccine_urls = VaccineUrl::select('id', 'us_state_id', 'url_address','zipcodes')
-                            ->with('us_state')->orderBy('id', 'DESC')->get();
+        $vaccine_urls = VaccineUrl::with('us_state')->orderBy('id', 'DESC')->get();
 
+        return VaccineUrlResource::collection($vaccine_urls); 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function listAllVaccineUrlZipcodes(): AnonymousResourceCollection 
+    {
+        $vaccine_urls = VaccineUrl::select('id', 'zipcodes')->get();
+        
         return VaccineUrlResource::collection($vaccine_urls); 
     }
 
@@ -47,7 +58,8 @@ class VaccineUrlController extends Controller
      */
     public function listPharmacyURL(): AnonymousResourceCollection
     {
-        $vaccine_urls = VaccineUrl::with('us_state')->orderBy('id', 'DESC')->where('category','PHARMACY')->paginate();
+        $vaccine_urls = VaccineUrl::with('us_state')->orderBy('id', 'DESC')
+                                ->where('category','PHARMACY')->paginate();
 
         return VaccineUrlResource::collection($vaccine_urls); 
     }
