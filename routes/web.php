@@ -86,7 +86,7 @@ Route::get('/script/scraper/{id}', function ($id) {
         ob_flush();flush(); 
         $counter++;
 
-        echo '<script>parent.postMessage("' . str(counter) . '","*");</script>';
+        echo '<script>parent.postMessage("' . (string)$counter . '","*");</script>';
     }
     pclose($a); 
     echo '<script>parent.postMessage("Done","*");</script>';
