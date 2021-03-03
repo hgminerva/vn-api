@@ -100,4 +100,6 @@ Route::get('/script/coordinates/{zipcode}', function ($zipcode) {
         ob_flush();flush(); 
     }
     pclose($a); 
+    return response($b, 200)
+                  ->header('Content-Type', 'text/plain');
 });
