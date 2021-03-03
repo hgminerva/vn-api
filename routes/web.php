@@ -95,11 +95,13 @@ Route::get('/script/scraper/{id}', function ($id) {
 Route::get('/script/coordinates/{zipcode}', function ($zipcode) {
     header('X-Accel-Buffering: no');
     $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/coordinates.py ' . $zipcode, 'r'); 
+    $lat = 0;
     while($b = fgets($a, 2048)) { 
         //echo $b."<br>\n"; 
+        $lat = $b;
         ob_flush();flush(); 
     }
     pclose($a); 
-    return response($b, 200)
+    return response($lat, 200)
                   ->header('Content-Type', 'text/plain');
 });
