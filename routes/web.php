@@ -96,7 +96,7 @@ Route::get('/script/coordinates/{zipcode}', function ($zipcode) {
     header('X-Accel-Buffering: no');
     $a = popen('sudo /usr/bin/python3 -u /var/www/scraper/coordinates.py ' . $zipcode, 'r'); 
     while($b = fgets($a, 2048)) { 
-        echo $b."<br>\n"; 
+        //echo $b."<br>\n"; 
         ob_flush();flush(); 
     }
     pclose($a); 
