@@ -27,6 +27,8 @@ class CustomerUser extends Model
         'address',
         'zipcodes',
         'home_county',
+        'latitude',
+        'longitude',
 
         'distance_willing',
         'keywords',

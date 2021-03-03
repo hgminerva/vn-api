@@ -33,7 +33,9 @@ class VaccineUrlResource extends JsonResource
             'state_initial' => $this->state_initial,
             'county' => $this->county,
             'zipcodes' => $this->zipcodes,
-            
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
+
             'status' => $this->status,
             'category' => $this->category,
             'enabled' => $this->enabled

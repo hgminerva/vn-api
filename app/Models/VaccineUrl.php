@@ -27,7 +27,9 @@ class VaccineUrl extends Model
         'state_initial',
         'county',
         'zipcodes',
-        
+        'latitude',
+        'longitude',
+
         'status',
         'category',
         'enabled'

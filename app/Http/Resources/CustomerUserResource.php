@@ -32,7 +32,9 @@ class CustomerUserResource extends JsonResource
             'address' => $this->address,
             'zipcodes' => $this->zipcodes,
             'home_county' => $this->home_county,
-    
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
+            
             'distance_willing' => $this->distance_willing,
             'keywords' => $this->keywords,
     
