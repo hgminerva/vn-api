@@ -46,7 +46,7 @@ class VaccineUrlController extends Controller
      */
     public function listAllVaccineUrlZipcodes(): AnonymousResourceCollection 
     {
-        $vaccine_urls = VaccineUrl::select('id', 'zipcodes')->get();
+        $vaccine_urls = VaccineUrl::select('id', 'zipcodes', 'latitude', 'longitude')->get();
         
         return VaccineUrlResource::collection($vaccine_urls); 
     }
