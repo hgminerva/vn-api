@@ -68,5 +68,5 @@ return $settings = array(
      * it used in the routes definition.
      */
      // 'saml2_controller' => '',
-     'saml2_controller' => 'App\Http\Controllers\Auth\SAML2LoginController',
+     // 'saml2_controller' => 'App\Http\Controllers\Auth\SAML2LoginController',
 );
