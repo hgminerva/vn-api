@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('welcome sso');
+    return view('welcome_sso');
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
