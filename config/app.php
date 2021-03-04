@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+        * SAML 2 Provider
+        */
+        Aacotroneo\Saml2\Saml2ServiceProvider::class,
+
     ],
 
     /*
