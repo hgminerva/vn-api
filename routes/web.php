@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('welcome sso');
+});
+
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
 
     $ch = curl_init();
@@ -105,3 +109,5 @@ Route::get('/script/coordinates/{zipcode}', function ($zipcode) {
     return response($lat, 200)
                   ->header('Content-Type', 'text/plain');
 });
+
+
