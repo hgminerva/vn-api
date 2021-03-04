@@ -65,6 +65,20 @@ class VaccineUrlController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+    * @return AnonymousResourceCollection
+     */
+    public function listVaccineUrlsPerState(VaccineUrlRequest $request): AnonymousResourceCollection
+    {
+        $us_state_id = $request->us_state_id;
+        $vaccine_urls = VaccineUrl::where('us_state_id',$us_state_id)->with('us_state')
+                                    ->orderBy('id', 'DESC')->get();
+
+        return VaccineUrlResource::collection($vaccine_urls);   
+    }
+
+    /**
      * Available filters.
      *
      * @return array
