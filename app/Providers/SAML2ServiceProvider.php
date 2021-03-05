@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Aacotroneo\Saml2\Events\Saml2LoginEvent;
+
 use Illuminate\Support\ServiceProvider;
 
 class SAML2ServiceProvider extends ServiceProvider
