@@ -44,10 +44,10 @@
 				<div style="text-align:left">Date: {{ $notification->batch_date }} &nbsp;&nbsp;&nbsp;&nbsp;Time: {{ $notification->batch_time }}</div>
 			</div>
 			<div style="clear:both; height:15px;"></div>
-			<div style="font-size:13px;  ">{{ substr($notification->vaccine_url->current_content, 0, 255) }} </div>
+			<div style="font-size:13px;  ">{{ substr($notification->vaccine_url->site_message, 0, 255) }} </div>
 			<div style="clear:both; height:10px;"></div>
 			<button style="background-color: #5b5e65;border: none; height:30px; width: 120px;color: #fff"><a href="{{$notification->vaccine_url->url_address}}" style="text-decoration: none;color: #fff;">Page Link</a></button >&nbsp;&nbsp;
-			<button style="background-color: #14b46c;border: none; height:30px; width: 150px;color: #fff;"><a href="{{$notification->vaccine_url->url_address}}" style="text-decoration: none;color: #fff;">Registration Link</a></button>
+			<button style="background-color: #14b46c;border: none; height:30px; width: 150px;color: #fff;"><a href="{{$notification->vaccine_url->url_registration}}" style="text-decoration: none;color: #fff;">Registration Link</a></button>
 		</div>
 	@endforeach
 </div>
