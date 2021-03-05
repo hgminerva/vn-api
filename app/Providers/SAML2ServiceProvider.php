@@ -34,7 +34,8 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            echo $user;
+            print_r($user);
+            die();
 
             $inputs = [
                 'sso_user_id'  => $user->getUserId(),
