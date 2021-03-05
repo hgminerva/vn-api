@@ -83,7 +83,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('us_state_questions', [UsStateQuestionController::class, 'index']);
     Route::get('us_state_questions/{id}', [UsStateQuestionController::class, 'show']);
     Route::post('us_state_questions', [UsStateQuestionController::class, 'store']);
-    Route::put('us_state_questions/{us_state_question', [UsStateQuestionController::class, 'update']);
+    Route::put('us_state_questions/{us_state_question}', [UsStateQuestionController::class, 'update']);
     Route::delete('us_state_questions/{us_state_question}', [UsStateQuestionController::class, 'destroy']);
     
 
