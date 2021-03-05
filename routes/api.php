@@ -15,6 +15,7 @@ use App\Http\Controllers\ChangePasswordController;
 
 use App\Http\Controllers\UsStateController;
 use App\Http\Controllers\UsStateCategoryController;
+use App\Http\Controllers\UsStateQuestionController;
 use App\Http\Controllers\VaccineUrlController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerUserController;
@@ -39,6 +40,7 @@ Route::get('customer_users/user_number/{user_number}', [CustomerUserController::
 
 Route::get('us_states/list/all', [UsStateController::class, 'listAllUSStates']);
 Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryController::class, 'categoriesByUSState']);
+Route::get('us_state_questions/us_state/{us_state_id}', [UsStateQuestionController::class, 'questionsByUSState']);
 
 Route::get('customer_users/email/{id}/{batch_number}', [CustomerUserController::class, 'sendEmailToUser']);
 Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
@@ -76,6 +78,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('us_state_categories', [UsStateCategoryController::class, 'store']);
     Route::put('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'update']);
     Route::delete('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'destroy']);
+    
+    // US State Question
+    Route::get('us_state_questions', [UsStateQuestionController::class, 'index']);
+    Route::get('us_state_questions/{id}', [UsStateQuestionController::class, 'show']);
+    Route::post('us_state_questions', [UsStateQuestionController::class, 'store']);
+    Route::put('us_state_questions/{us_state_question', [UsStateQuestionController::class, 'update']);
+    Route::delete('us_state_questions/{us_state_question}', [UsStateQuestionController::class, 'destroy']);
     
 
     // Vaccine Urls
