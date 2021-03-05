@@ -38,7 +38,7 @@ class EventServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            print_r($user);
+            print_r($userData);
             die();
         });
     }
