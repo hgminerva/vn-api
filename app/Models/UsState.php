@@ -14,6 +14,7 @@ class UsState extends Model
     protected $fillable = [
         'state_name',
         'state_initial',
+        'default_category',
         'remarks'
     ];
 }
