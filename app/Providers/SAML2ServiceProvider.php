@@ -34,6 +34,8 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
+            echo $user;
+
             $inputs = [
                 'sso_user_id'  => $user->getUserId(),
                 'username'     => self::getValue($user->getAttribute('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name')),
