@@ -19,8 +19,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    $user = \Auth::user();
-    echo $user;
+    echo session('user')
 
 /* echo Session::get('userData'); */
 /*     ob_start(); 
