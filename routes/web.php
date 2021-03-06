@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use Session;
-
 Route::get('/', function () {
     return view('welcome');
 });
