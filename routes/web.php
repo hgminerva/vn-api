@@ -18,14 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    ob_start(); 
+    echo $_SESSION['userData'];
+/*     ob_start(); 
     $url = 'https://gs-vaccinetracker.pinnaclecare.com/security/sso'; 
     while (ob_get_status()) 
     {
         ob_end_clean();
     }
     header('Location: ' . $url);
-    die();
+    die(); */
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {

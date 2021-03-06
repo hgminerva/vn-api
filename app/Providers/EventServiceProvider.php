@@ -38,7 +38,7 @@ class EventServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-
+            $_SESSION['userData'] = $userData;
 
             //print_r($userData);
             //die();
