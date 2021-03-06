@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    echo session('user')
+    echo session('user');
 
 /* echo Session::get('userData'); */
 /*     ob_start(); 
