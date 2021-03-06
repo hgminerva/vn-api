@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
 
-    echo session('user');
+    $userName =  Auth::user()->name;
+    echo $userName;
 
 /* echo Session::get('userData'); */
 /*     ob_start(); 
