@@ -47,6 +47,7 @@ class EventServiceProvider extends ServiceProvider
             $authenticated_user = User::where('username', 'sso')->first();
             Auth::guard('web')->login($authenticated_user, true);
 
+            return '/';
             //print_r(Auth::user());
             //die();
 
