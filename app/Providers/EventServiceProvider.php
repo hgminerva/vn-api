@@ -38,8 +38,16 @@ class EventServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            print_r($userData);
-            die();
+            ob_start(); 
+            $url = 'https://gs-vaccinetracker.pinnaclecare.com/security/sso'; 
+            while (ob_get_status()) 
+            {
+                ob_end_clean();
+            }
+            header( "Location: $url" );
+
+            //print_r($userData);
+            //die();
         });
     }
 }
