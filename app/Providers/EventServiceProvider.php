@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Event;
 
 use Aacotroneo\Saml2\Events\Saml2LoginEvent;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class EventServiceProvider extends ServiceProvider
