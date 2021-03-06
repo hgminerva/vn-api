@@ -41,7 +41,7 @@ class EventServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            redirect()->route('/dashboard?user_id=1');
+            redirect()->route('/');
             //session(['user'=>'hi']);
 
             //$authenticated_user = User::where('username', 'sso')->first();
