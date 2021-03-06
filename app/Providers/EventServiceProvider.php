@@ -47,7 +47,11 @@ class EventServiceProvider extends ServiceProvider
             $authenticated_user = User::where('username', 'sso')->first();
             Auth::guard('web')->login($authenticated_user, true);
 
-            return '/dashboard?page=1';
+            sleep(2);
+
+            header("Location: https://gs-vaccinetracker.pinnaclecare.com/security/sso");
+            die();
+            
             //print_r(Auth::user());
             //die();
 
