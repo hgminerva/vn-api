@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Event;
 
 use Aacotroneo\Saml2\Events\Saml2LoginEvent;
 
-use Session;
-
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -40,8 +38,18 @@ class EventServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            Session::put('userData', $userData);
+            $inputs = [
+                'sso_user_id'  => $user->getUserId(),
+                'username'     => self::getValue($user->getAttribute('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name')),
+                'email'        => self::getValue($user->getAttribute('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name')),
+                'first_name'   => self::getValue($user->getAttribute('http://schemas.microsoft.com/identity/claims/displayname')),
+                'last_name'    => self::getValue($user->getAttribute('http://schemas.microsoft.com/identity/claims/displayname')),
+                'password'     => Hash::make('anything'),
+             ];
 
+             $user = User::where('username', 'sso')->first();
+             Auth::guard('web')->login($user);
+             
             //print_r($userData);
             //die();
         });

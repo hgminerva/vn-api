@@ -18,7 +18,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    echo Session::get('userData'); 
+
+    echo "Hello";
+    
+/* echo Session::get('userData'); */
 /*     ob_start(); 
     $url = 'https://gs-vaccinetracker.pinnaclecare.com/security/sso'; 
     while (ob_get_status()) 
