@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Event;
 
 use Aacotroneo\Saml2\Events\Saml2LoginEvent;
 
+use Session;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -38,7 +40,7 @@ class EventServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            $_SESSION['userData'] = $userData;
+            Session::put('userData', $userData);
 
             //print_r($userData);
             //die();

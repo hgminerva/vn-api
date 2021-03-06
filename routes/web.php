@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use Session;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    echo $_SESSION['userData'];
+    echo Session::get('userData'); 
 /*     ob_start(); 
     $url = 'https://gs-vaccinetracker.pinnaclecare.com/security/sso'; 
     while (ob_get_status()) 
