@@ -18,8 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    
-    return view('welcome_sso');
+    ob_start(); 
+    $url = 'https://gs-vaccinetracker.pinnaclecare.com/security/sso'; 
+    while (ob_get_status()) 
+    {
+        ob_end_clean();
+    }
+    header('Location: ' . $url);
+    die();
 });
 
 Route::get('/soap/login/{employee_id}', function ($employee_id) {
