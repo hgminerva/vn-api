@@ -49,7 +49,7 @@ class EventServiceProvider extends ServiceProvider
 
             sleep(3);
 
-            header("Location: https://gs-vaccinetracker.pinnaclecare.com/security/sso?id=");
+            header("Location: https://gs-vaccinetracker.pinnaclecare.com/security/sso?id=".str($userData->id));
             die();
         });
     }
