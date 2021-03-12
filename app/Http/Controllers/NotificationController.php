@@ -36,6 +36,7 @@ class NotificationController extends Controller
     {
         $notifications = Notification::with('customer_user','vaccine_url')
                                      ->where('customer_user_id', $request->customer_user_id)
+                                     ->orderBy('id', 'desc')
                                      ->take(100)
                                      ->get();
 
