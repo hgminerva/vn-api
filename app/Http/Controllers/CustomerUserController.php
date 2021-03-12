@@ -139,7 +139,7 @@ class CustomerUserController extends Controller
      */
     public function show($id): CustomerUserResource
     {
-        $customer_user = CustomerUser::with('customer','user','us_state','us_state_category')
+        $customer_user = CustomerUser::with('customer','user','us_state','us_state_category','office_us_state','office_us_state_category')
                                     ->findOrFail($id);
 
         return new CustomerUserResource($customer_user);
@@ -154,7 +154,7 @@ class CustomerUserController extends Controller
      */
     public function showUserByUserNumber($user_number): CustomerUserResource
     {
-        $customer_user = CustomerUser::with('customer','user','us_state','us_state_category')
+        $customer_user = CustomerUser::with('customer','user','us_state','us_state_category','office_us_state','office_us_state_category')
                                      ->where('user_number', $user_number)->firstOrFail();
 
         return new CustomerUserResource($customer_user);
