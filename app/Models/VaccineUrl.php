@@ -32,6 +32,7 @@ class VaccineUrl extends Model
 
         'status',
         'category',
+        'rank',
         'enabled'
     ];
 

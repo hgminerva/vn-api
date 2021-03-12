@@ -38,6 +38,7 @@ class VaccineUrlResource extends JsonResource
 
             'status' => $this->status,
             'category' => $this->category,
+            'rank' => $this->rank,
             'enabled' => $this->enabled
         ];
     }
