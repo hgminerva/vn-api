@@ -26,7 +26,7 @@ class CustomerUserController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $customer_users = CustomerUser::with('customer','user','us_state','us_state_category')->paginate();
+        $customer_users = CustomerUser::with('customer','user','us_state','us_state_category','office_us_state','office_us_state_category')->paginate();
 
         return CustomerUserResource::collection($customer_users);
     }
@@ -38,7 +38,7 @@ class CustomerUserController extends Controller
      */
     public function customerUsersByCustomer(CustomerUserRequest $request): AnonymousResourceCollection
     {
-        $customer_users = CustomerUser::with('customer','user','us_state','us_state_category')
+        $customer_users = CustomerUser::with('customer','user','us_state','us_state_category','office_us_state','office_us_state_category')
                                 ->where('customer_id', $request->customer_id)
                                 ->paginate();
 

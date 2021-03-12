@@ -31,6 +31,7 @@ class CustomerUserResource extends JsonResource
             'cellphone' => $this->cellphone,
             'address' => $this->address,
             'zipcodes' => $this->zipcodes,
+            'office_zipcodes' => $this->office_zipcodes,
             'home_county' => $this->home_county,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
@@ -44,7 +45,11 @@ class CustomerUserResource extends JsonResource
             'us_state' => new UsStateResource($this->whenLoaded('us_state')),
             'us_state_category_id' => $this->us_state_category_id,
             'us_state_category' => new UsStateCategoryResource($this->whenLoaded('us_state_category')),
-    
+            'office_us_state_id' => $this->office_us_state_id,
+            'office_us_state' => new UsStateResource($this->whenLoaded('office_us_state')),
+            'office_us_state_category_id' => $this->office_us_state_category_id,
+            'office_us_state_category' => new UsStateCategoryResource($this->whenLoaded('office_us_state_category')),
+
             'enrollment_date' => $this->enrollment_date,
             'enrollment_out_date' => $this->enrollment_out_date,
             

@@ -26,6 +26,7 @@ class CustomerUser extends Model
         'cellphone',
         'address',
         'zipcodes',
+        'office_zipcodes',
         'home_county',
         'latitude',
         'longitude',
@@ -36,6 +37,8 @@ class CustomerUser extends Model
         'user_id',
         'us_state_id',
         'us_state_category_id',
+        'office_us_state_id',
+        'office_us_state_category_id',
 
         'enrollment_date',
         'enrollment_out_date',
@@ -63,5 +66,13 @@ class CustomerUser extends Model
     public function us_state_category()
     {
         return $this->belongsTo(UsStateCategory::class, 'us_state_category_id');
+    }
+    public function office_us_state()
+    {
+        return $this->belongsTo(UsState::class, 'office_us_state_id');
+    }
+    public function office_us_state_category()
+    {
+        return $this->belongsTo(UsStateCategory::class, 'office_us_state_category_id');
     }
 }
