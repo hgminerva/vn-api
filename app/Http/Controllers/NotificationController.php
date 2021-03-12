@@ -36,7 +36,8 @@ class NotificationController extends Controller
     {
         $notifications = Notification::with('customer_user','vaccine_url')
                                      ->where('customer_user_id', $request->customer_user_id)
-                                     ->paginate();
+                                     ->take(100)
+                                     ->get();
 
         return NotificationResource::collection($notifications);
     }
