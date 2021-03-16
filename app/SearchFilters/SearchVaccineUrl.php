@@ -18,6 +18,10 @@ class SearchVaccineUrl
     {
         return $query->orWhere('description','like', '%' . $value . '%')
             ->orWhere('state_initial','like', '%' . $value . '%')
+            ->orWhere('zipcodes','like', '%' . $value . '%')
+            ->orWhere('site_message','like', '%' . $value . '%')
+            ->orWhere('county','like', '%' . $value . '%')
+            ->orWhere('status','like', '%' . $value . '%')
             ->orWhere('remarks','like', '%' . $value . '%');
     }
 }
