@@ -19,7 +19,8 @@ class UsStateResource extends JsonResource
             'state_name' => $this->state_name,
             'state_initial' => $this->state_initial,
             'default_category' => $this->default_category,
-            'remarks' => $this->remarks
+            'remarks' => $this->remarks,
+            'total_urls' => $this->total_urls
         ];
     }
 }
