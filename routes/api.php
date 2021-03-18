@@ -41,6 +41,7 @@ Route::get('customer_users/user_number/{user_number}', [CustomerUserController::
 Route::get('us_states/list/all', [UsStateController::class, 'listAllUSStates']);
 Route::get('us_state_categories/us_state/{us_state_id}', [UsStateCategoryController::class, 'categoriesByUSState']);
 Route::get('us_state_questions/us_state/{us_state_id}', [UsStateQuestionController::class, 'questionsByUSState']);
+Route::get('us_states/report/url_status', [UsStateController::class, 'listAllUSStatesWithUrlStatus']);    
 
 Route::get('customer_users/email/{id}/{batch_number}', [CustomerUserController::class, 'sendEmailToUser']);
 Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
@@ -70,7 +71,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('us_states', [UsStateController::class, 'store']);
     Route::put('us_states/{us_state}', [UsStateController::class, 'update']);
     Route::delete('us_states/{us_state}', [UsStateController::class, 'destroy']);
-    Route::get('us_states/report/url_status', [UsStateController::class, 'listAllUSStatesWithUrlStatus']);    
+    
 
     // US State Categories
     Route::get('us_state_categories', [UsStateCategoryController::class, 'index']);
