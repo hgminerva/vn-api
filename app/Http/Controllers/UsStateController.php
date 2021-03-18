@@ -36,6 +36,21 @@ class UsStateController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function listAllUSStatesWithUrlStatus(): AnonymousResourceCollection
+    {
+
+        $us_states = UsState::join('vaccine_urls', 'us_states.id', '=', 'vaccine_urls.us_state_id')
+                            ->selectRaw('us_states.*, count(vaccine_urls.id) as total_urls')
+                            ->get();
+
+        return UsStateResource::collection($us_states);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

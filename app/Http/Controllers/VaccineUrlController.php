@@ -78,6 +78,8 @@ class VaccineUrlController extends Controller
         return VaccineUrlResource::collection($vaccine_urls);   
     }
 
+    
+
     /**
      * Available filters.
      *
