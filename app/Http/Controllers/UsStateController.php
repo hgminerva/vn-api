@@ -44,7 +44,7 @@ class UsStateController extends Controller
     {
 
         $us_states = UsState::join('vaccine_urls', 'us_states.id', '=', 'vaccine_urls.us_state_id')
-                            ->selectRaw('us_states.*, count(vaccine_urls.id) as total_urls')
+                            ->selectRaw('us_states.state_name, count(vaccine_urls.id) as total_urls')
                             ->groupBy('us_states.id')
                             ->get();
 
