@@ -99,6 +99,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('vaccine_urls/list/zipcodes', [VaccineUrlController::class, 'listAllVaccineUrlZipcodes']);
     Route::get('vaccine_urls/list/pharmacy', [VaccineUrlController::class, 'listPharmacyURL']);
     Route::get('vaccine_urls/us_state/{us_state_id}', [VaccineUrlController::class, 'listVaccineUrlsPerState']);
+    Route::get('vaccine_urls/places/us_state/{us_state_id}', [VaccineUrlController::class, 'listOfAllPlaces']);
     Route::post('vaccine_urls/query', [VaccineUrlController::class, 'query']);
 
     // Customers
