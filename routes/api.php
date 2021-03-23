@@ -21,6 +21,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerUserController;
 use App\Http\Controllers\DependentController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UserRightController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -79,7 +81,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('us_state_categories', [UsStateCategoryController::class, 'store']);
     Route::put('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'update']);
     Route::delete('us_state_categories/{us_state_category}', [UsStateCategoryController::class, 'destroy']);
-    
 
     // US State Question
     Route::get('us_state_questions', [UsStateQuestionController::class, 'index']);
@@ -88,6 +89,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('us_state_questions/{us_state_question}', [UsStateQuestionController::class, 'update']);
     Route::delete('us_state_questions/{us_state_question}', [UsStateQuestionController::class, 'destroy']);
     
+    // User Rights
+    Route::get('user_rights', [UserRightController::class, 'index']);
+    Route::get('user_rights/{id}', [UserRightController::class, 'show']);
+    Route::post('user_rights', [UserRightController::class, 'store']);
+    Route::put('user_rights/{user_right}', [UserRightController::class, 'update']);
+    Route::delete('user_rights/{user_right}', [UserRightController::class, 'destroy']);
+    Route::get('user_rights/user/{user_id}', [UserRightController::class, 'userRightsByUser']);
 
     // Vaccine Urls
     Route::get('vaccine_urls', [VaccineUrlController::class, 'index']);
