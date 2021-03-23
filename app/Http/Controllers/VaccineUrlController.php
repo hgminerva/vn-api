@@ -114,7 +114,7 @@ class VaccineUrlController extends Controller
      */
     public function query(VaccineUrlRequest $request): AnonymousResourceCollection
     {
-        $query = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')->query();
+        $query = VaccineUrl::query();
 
         $availableFilters = collect($this->filters())
             ->filter(function ($filter, $key) use ($request) {
