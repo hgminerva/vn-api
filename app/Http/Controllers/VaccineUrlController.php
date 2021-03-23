@@ -125,10 +125,6 @@ class VaccineUrlController extends Controller
             $query = (new $filter)->handle($query, $request->get($key));
         }
 
-        $vaccine_urls = $query->join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')
-                              ->where('state_name', 'LIKE', '%'.$request->search.'%')
-                              ->get();
-
         $vaccine_urls = $query->with('us_state')->get();
 
         return VaccineUrlResource::collection($vaccine_urls);
