@@ -23,6 +23,6 @@ class SearchVaccineUrl
             ->orWhere('vaccine_urls.site_message','like', '%' . $value . '%')
             ->orWhere('vaccine_urls.county','like', '%' . $value . '%')
             ->orWhere('vaccine_urls.status','like', '%' . $value . '%')
-            ->orWhere('rvaccine_urls.emarks','like', '%' . $value . '%');
+            ->orWhere('vaccine_urls.remarks','like', '%' . $value . '%');
     }
 }
