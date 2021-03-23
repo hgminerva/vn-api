@@ -32,4 +32,11 @@ class UserController extends Controller
 
         return new UserResource($user->refresh());
     }
+    // view
+    public function show($id): UserResource
+    {
+        $user = User::findOrFail($id);
+
+        return new UserResource($user);
+    }
 }
