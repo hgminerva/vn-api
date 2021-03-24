@@ -137,6 +137,16 @@ class VaccineUrlController extends Controller
                                     ->orWhere('vaccine_urls.county','like', '%' . $value . '%')
                                     ->orWhere('vaccine_urls.status','like', '%' . $value . '%')
                                     ->orWhere('vaccine_urls.remarks','like', '%' . $value . '%')
+                                    ->select('vaccine_urls.id', 
+                                             'vaccine_urls.state_initial',
+                                             'vaccine_urls.zipcodes', 
+                                             'vaccine_urls.latitude', 
+                                             'vaccine_urls.longitude', 
+                                             'vaccine_urls.description', 
+                                             'vaccine_urls.rank', 
+                                             'vaccine_urls.status',
+                                             'vaccine_urls.site_message',
+                                             'vaccine_urls.url_registration')
                                     ->get();
 
 
