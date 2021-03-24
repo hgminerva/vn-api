@@ -17,7 +17,7 @@ class UserRightResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'user' => new User($this->whenLoaded('user')),
+            'user' => new UserResource($this->whenLoaded('user')),
             'module' => $this->module,
             'can_create' => $this->can_create,
             'can_read' => $this->can_read,
