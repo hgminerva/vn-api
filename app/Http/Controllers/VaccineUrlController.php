@@ -114,18 +114,31 @@ class VaccineUrlController extends Controller
      */
     public function query(VaccineUrlRequest $request): AnonymousResourceCollection
     {
-        $query = VaccineUrl::query();
+        // $query = VaccineUrl::query();
 
-        $availableFilters = collect($this->filters())
-            ->filter(function ($filter, $key) use ($request) {
-                return $request->has($key);
-            });
+        // $availableFilters = collect($this->filters())
+        //     ->filter(function ($filter, $key) use ($request) {
+        //         return $request->has($key);
+        //     });
 
-        foreach ($availableFilters as $key => $filter) {
-            $query = (new $filter)->handle($query, $request->get($key));
-        }
+        // foreach ($availableFilters as $key => $filter) {
+        //     $query = (new $filter)->handle($query, $request->get($key));
+        // }
 
-        $vaccine_urls = $query->with('us_state')->get();
+        // $vaccine_urls = $query->with('us_state')->get();
+        
+        $value = $request->search;
+        $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.user_id')
+                                    ->orWhere('vaccine_urls.description','like', '%' . $value . '%')
+                                    ->orWhere('us_states.state_name','like', '%' . $value . '%')
+                                    ->orWhere('us_states.state_initial','like', '%' . $value . '%')
+                                    ->orWhere('vaccine_urls.zipcodes','like', '%' . $value . '%')
+                                    ->orWhere('vaccine_urls.site_message','like', '%' . $value . '%')
+                                    ->orWhere('vaccine_urls.county','like', '%' . $value . '%')
+                                    ->orWhere('vaccine_urls.status','like', '%' . $value . '%')
+                                    ->orWhere('vaccine_urls.remarks','like', '%' . $value . '%')
+                                    ->get();
+
 
         return VaccineUrlResource::collection($vaccine_urls);
     }

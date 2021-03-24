@@ -15,6 +15,8 @@ class UsState extends Model
         'state_name',
         'state_initial',
         'default_category',
-        'remarks'
+        'remarks',
+        'status',
+        'registration_url'
     ];
 }
