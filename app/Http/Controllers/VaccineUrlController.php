@@ -146,6 +146,7 @@ class VaccineUrlController extends Controller
                                              'vaccine_urls.rank', 
                                              'vaccine_urls.status',
                                              'vaccine_urls.site_message',
+                                             'vaccine_urls.url_address',
                                              'vaccine_urls.url_registration')
                                     ->get();
 
