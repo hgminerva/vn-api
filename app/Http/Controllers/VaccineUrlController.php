@@ -128,7 +128,7 @@ class VaccineUrlController extends Controller
         // $vaccine_urls = $query->with('us_state')->get();
         
         $value = $request->search;
-        $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.user_id')
+        $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')
                                     ->orWhere('vaccine_urls.description','like', '%' . $value . '%')
                                     ->orWhere('us_states.state_name','like', '%' . $value . '%')
                                     ->orWhere('us_states.state_initial','like', '%' . $value . '%')
