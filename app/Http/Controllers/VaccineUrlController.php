@@ -155,6 +155,55 @@ class VaccineUrlController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function queryByStateName(VaccineUrlRequest $request): AnonymousResourceCollection
+    {        
+        $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')
+                                    ->where('us_states.state_name','like', '%' . $request->state_name . '%')
+                                    ->select('vaccine_urls.id', 
+                                             'vaccine_urls.state_initial',
+                                             'vaccine_urls.zipcodes', 
+                                             'vaccine_urls.latitude', 
+                                             'vaccine_urls.longitude', 
+                                             'vaccine_urls.description', 
+                                             'vaccine_urls.rank', 
+                                             'vaccine_urls.status',
+                                             'vaccine_urls.site_message',
+                                             'vaccine_urls.url_address',
+                                             'vaccine_urls.url_registration')
+                                    ->get();
+        return VaccineUrlResource::collection($vaccine_urls);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function queryByPlace(VaccineUrlRequest $request): AnonymousResourceCollection
+    {        
+        $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')
+                                  ->where('us_states.state_name','like', '%' . $request->state_name . '%')
+                                  ->where('vaccine_urls.county','like', '%' . $request->place . '%')
+                                  ->select('vaccine_urls.id', 
+                                            'vaccine_urls.state_initial',
+                                            'vaccine_urls.zipcodes', 
+                                            'vaccine_urls.latitude', 
+                                            'vaccine_urls.longitude', 
+                                            'vaccine_urls.description', 
+                                            'vaccine_urls.rank', 
+                                            'vaccine_urls.status',
+                                            'vaccine_urls.site_message',
+                                            'vaccine_urls.url_address',
+                                            'vaccine_urls.url_registration')
+                                    ->get();
+        return VaccineUrlResource::collection($vaccine_urls);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
