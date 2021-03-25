@@ -96,6 +96,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('user_rights/{user_right}', [UserRightController::class, 'update']);
     Route::delete('user_rights/{user_right}', [UserRightController::class, 'destroy']);
     Route::get('user_rights/user/{user_id}', [UserRightController::class, 'userRightsByUser']);
+    Route::get('user_rights/user/username/{username}', [UserRightController::class, 'userRightsByUsername']);
 
     // Vaccine Urls
     Route::get('vaccine_urls', [VaccineUrlController::class, 'index']);

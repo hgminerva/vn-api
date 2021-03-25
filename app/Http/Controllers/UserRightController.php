@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRightRequest;
 use App\Http\Resources\UserRightResource;
+
 use App\Models\UserRight;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
@@ -32,6 +35,28 @@ class UserRightController extends Controller
     {
         $user_rights = UserRight::with('user')
                                 ->where('user_id', $request->user_id)
+                                ->get();
+
+        return UserRightResource::collection($user_rights);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+    * @return AnonymousResourceCollection
+     */
+    public function userRightsByUsername(UserRightRequest $request): AnonymousResourceCollection
+    {
+        $user = User::where('username', $request->username)
+                    ->first();
+               
+        $user_id = 0;
+        if($user) {
+            $user_id = $user->id;
+        }
+
+        $user_rights = UserRight::with('user')
+                                ->where('user_id', $user_id)
                                 ->get();
 
         return UserRightResource::collection($user_rights);
