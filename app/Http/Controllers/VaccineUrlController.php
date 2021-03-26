@@ -162,7 +162,7 @@ class VaccineUrlController extends Controller
     public function queryByStateName(VaccineUrlRequest $request): AnonymousResourceCollection
     {        
         $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')
-                                    ->where('us_states.state_name','like', '%' . $request->state_name . '%')
+                                    ->where('us_states.state_name','=', $request->state_name)
                                     ->select('vaccine_urls.id', 
                                              'vaccine_urls.state_initial',
                                              'vaccine_urls.zipcodes', 
@@ -186,8 +186,8 @@ class VaccineUrlController extends Controller
     public function queryByPlace(VaccineUrlRequest $request): AnonymousResourceCollection
     {        
         $vaccine_urls = VaccineUrl::join('us_states', 'us_states.id', '=', 'vaccine_urls.us_state_id')
-                                  ->where('us_states.state_name','like', '%' . $request->state_name . '%')
-                                  ->where('vaccine_urls.county','like', '%' . $request->place . '%')
+                                  ->where('us_states.state_name','=', $request->state_name)
+                                  ->where('vaccine_urls.county','=', $request->place)
                                   ->select('vaccine_urls.id', 
                                             'vaccine_urls.state_initial',
                                             'vaccine_urls.zipcodes', 
