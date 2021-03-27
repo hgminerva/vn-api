@@ -8,6 +8,7 @@ use App\Http\Resources\CustomerUserResource;
 use App\Mail\SendNotificationToUser;
 
 use App\Models\CustomerUser;
+use App\Models\Dependent;
 use App\Models\VaccineUrl;
 
 use Illuminate\Http\JsonResponse;
@@ -77,11 +78,30 @@ class CustomerUserController extends Controller
             // 'to'   => '639178123982',
             'to'   => $cellphone,
             'from' => '12013553975',
-            'text' => 'Vaccine Tracker: Match Found.  To view result go to https://tinyurl.com/3ht5a8s9'
+            'text' => 'Vaccine Tracker: Match Found.  To view result go to https://tinyurl.com/saee40jk'
         ]);
 
         return response()->json(['status' => 'SMS successfully sent'], Response::HTTP_OK);
     }
+
+    /**
+     * Send email to user
+     *
+     * @param  int  $id
+     *
+     * @return JsonResponse
+     */
+    public function sendEmailToParentUser($id, $batch_number): JsonResponse
+    {
+        $customer_user = CustomerUser::findOrFail($id);
+        $parent = Dependent::where('customer_user_dependent_id','=',$id)->first();
+        $user = CustomerUser::findOrFail($parent->customer_user_id);
+
+        Mail::to($user->email)->send(new SendNotificationToUser($customer_user, $batch_number));
+
+        return response()->json(['status' => 'Mail successfully sent'], Response::HTTP_OK);
+    }
+
 
     /**
      * Notify the user initially

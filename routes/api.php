@@ -46,6 +46,7 @@ Route::get('us_state_questions/us_state/{us_state_id}', [UsStateQuestionControll
 Route::get('us_states/report/url_status', [UsStateController::class, 'listAllUSStatesWithUrlStatus']);    
 
 Route::get('customer_users/email/{id}/{batch_number}', [CustomerUserController::class, 'sendEmailToUser']);
+Route::get('customer_users/email/parent/{id}/{batch_number}', [CustomerUserController::class, 'sendEmailToParentUser']);
 Route::get('customer_users/sms/{id}', [CustomerUserController::class, 'sendSmsToUser']);
 Route::get('customer_users/notify/{id}', [CustomerUserController::class, 'notifyUser']);
 
