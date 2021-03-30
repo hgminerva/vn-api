@@ -18,7 +18,9 @@ class Notification extends Model
         'customer_user_id',
         'vaccine_url_id',
         'is_sms_sent',
-        'is_email_sent'
+        'is_email_sent',
+        'zipcode_type',
+        'distance'
     ];
 
     public function customer_user()

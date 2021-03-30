@@ -28,7 +28,9 @@ class NotificationResource extends JsonResource
             'vaccine_url' => new VaccineUrlResource($this->whenLoaded('vaccine_url')),
 
             'is_sms_sent' => $this->is_sms_sent,
-            'is_email_sent' => $this->is_email_sent
+            'is_email_sent' => $this->is_email_sent,
+            'zipcode_type' => $this->zipcode_type,
+            'distance' => $this->distance
         ];
     }
 }
